@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guessing Game</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#eee;
+    text-align:center;
+    font-family:Georgia, serif;
+}
+
+h1{
+    margin:20px 0;
+}
+
+.container{
+    border:2px solid red;
+    padding:30px;
+}
+
+.result{
+    margin-bottom:20px;
+}
+
+.result h2{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin:20px 0;
+}
+
+.card{
+    width:170px;
+    height:200px;
+    background:blue;
+    color:white;
+    border-radius:10px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:15px;
+}
+
+.card h3{
+    color:black;
+    font-size:28px;
+}
+
+.number{
+    font-size:100px;
+    font-weight:bold;
+}
+
+button{
+    background:#c00;
+    color:white;
+    border:none;
+    padding:12px 35px;
+    font-size:20px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#900;
+}
+</style>
+</head>
+<body>
+
+<h1>Welcome to the Guessing Game!!</h1>
+
+<div class="container">
+
+    <div class="result">
+        <h2 id="winner">Click Run 🎲</h2>
+        <p>Guess any number from 1-10</p>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Player 1</h3>
+            <div class="number" id="p1">0</div>
+        </div>
+
+        <div class="card">
+            <h3>Player 2</h3>
+            <div class="number" id="p2">0</div>
+        </div>
+    </div>
+
+    <button onclick="playGame()">Run</button>
+
+</div>
+
+<script>
+function playGame() {
+
+    let player1 = Math.floor(Math.random() * 10) + 1;
+    let player2 = Math.floor(Math.random() * 10) + 1;
+
+    document.getElementById("p1").textContent = player1;
+    document.getElementById("p2").textContent = player2;
+
+    let winnerText = "";
+
+    if(player1 > player2){
+        winnerText = "🎉 Player One Wins !!";
+    }
+    else if(player2 > player1){
+        winnerText = "🥳 Player Two Wins !!";
+    }
+    else{
+        winnerText = "🤝 It's a Draw !!";
+    }
+
+    document.getElementById("winner").textContent = winnerText;
+}
+</script>
+
+</body>
+</html>
